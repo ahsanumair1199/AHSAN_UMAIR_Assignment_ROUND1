@@ -8,8 +8,10 @@ from .models import Account
 from django.contrib.auth.models import User
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
+from django.http import HttpResponse, HttpResponseNotFound
 from .serializers import AccountSerializerWithJwt
-
+from django.views import View
+import os
 
 # fetch user data after login using post request
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -34,6 +36,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+
 
 
 # get user profile details
